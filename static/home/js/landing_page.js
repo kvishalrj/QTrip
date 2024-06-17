@@ -1,21 +1,21 @@
 async function init() {
-  //Fetches list of all cities along with their images and description
-  console.log("hello console");
-  let cities = await fetchCities();
-  console.log(cities);
 
-  // //Updates the DOM with the cities
-  // if (cities) {
-  //   cities.forEach((key) => {
-  //     addCityToDOM(key.id, key.city, key.description, key.image);
-  //   });
-  // }
+  //Fetches list of all cities along with their images and description
+  let cities = await fetchCities();
+
+  //Updates the DOM with the cities
+  if (cities) {
+    cities.forEach((key, index) => {
+      if (index!==7 && index!==3) {
+        addCityToDOM(key.id, key.city, key.description, key.image, index);
+      }
+    });
+  }
 }
 
-//Implementation of fetch call
+ // Fetch cities using the Backend API and return the data
 async function fetchCities() {
-  // TODO: MODULE_CITIES
-  // 1. Fetch cities using the Backend API and return the data
+ 
   try {
     let response = await fetch('https://content-qtripdynamic-qa-backend.azurewebsites.net/api/v1/cities');
     
@@ -33,33 +33,32 @@ async function fetchCities() {
 
 }
 
-//Implementation of DOM manipulation to add cities
+// Populate the City details and insert those details into the DOM
 function addCityToDOM(id, city, description, image) {
-  // TODO: MODULE_CITIES
-  // 1. Populate the City details and insert those details into the DOM
-  // Create the city card element
 
-  const cityCard = document.createElement("div");
-  cityCard.className = "col-12 col-sm-6 col-lg-3 mb-4"; // Bootstrap classes for responsiveness
-
-  const cityLink = document.createElement("a");
-  cityLink.href = `pages/adventures/?city=${id}`;
-  cityLink.id = id; 
-
-  cityLink.innerHTML = `
-  <div class="tile">
-    <img src="${image}" class="card-img-top" alt="${city}">
-    <div class="tile-text text-center mb-2">
-      <h5 class="card-title">${city}</h5>
-      <p class="card-text">${description}</p>
-    </div>
-  </div>
-  `;    
-
-  cityCard.appendChild(cityLink);
+  const boxDiv = document.createElement("div");
+  boxDiv.classList.add("box");
+  
+  boxDiv.innerHTML = `<a href="pages/adventures/?city=${id}" id="${id}">
+            <img src="${image}" alt="">
+            <div class="content">
+                <h3> <i class="fas fa-map-marker-alt"></i> ${city} (${description})</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price"> $90.00 <span>$120.00</span> </div>
+                <a href="#" class="btn">book now</a>
+            </div>
+          </a>`;
 
   const dataContainer = document.getElementById("data");
-  dataContainer.appendChild(cityCard);
+  dataContainer.appendChild(boxDiv);
+  console.log("1");
 
 }
 
