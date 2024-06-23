@@ -207,7 +207,7 @@ header .search-bar-container label:hover{
   color:#666;
 }
 
-.login-form-container form p a{
+.login-form-container form p span{
   color:var(--orange);
 }
 
@@ -216,7 +216,7 @@ header .search-bar-container label:hover{
   text-decoration: underline;
 }
 
-.login-form-container #form-close{
+.login-form-container #login-form-close{
   position: absolute;
   top:2rem; right:3rem;
   font-size: 5rem;

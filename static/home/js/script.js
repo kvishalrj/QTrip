@@ -2,7 +2,10 @@ let searchBtn = document.querySelector('#search-btn');
 let searchBar = document.querySelector('.search-bar-container');
 let formBtn = document.querySelector('#login-btn');
 let loginForm = document.querySelector('.login-form-container');
-let formClose = document.querySelector('#form-close');
+let registerNow = document.querySelector('#register-now');
+// let registerForm = document.querySelector('.register-form-container');
+// let loginNow = document.querySelector('#login-now');
+let loginFormClose = document.querySelector('#login-form-close');
 let menu = document.querySelector('#menu-bar');
 let navbar = document.querySelector('.navbar');
 let videoBtn = document.querySelectorAll('.vid-btn');
@@ -29,8 +32,18 @@ formBtn.addEventListener('click', () =>{
     loginForm.classList.add('active');
 });
 
-formClose.addEventListener('click', () =>{
+loginFormClose.addEventListener('click', () =>{
     loginForm.classList.remove('active');
+});
+
+registerNow.addEventListener('clcik', () =>{
+    loginForm.classList.remove('active');
+    registerForm.classList.add('active');
+});
+
+loginNow.addEventListener('clcik', () =>{
+    registerForm.classList.remove('active');
+    loginForm.classList.add('active');
 });
 
 videoBtn.forEach(btn =>{

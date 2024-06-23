@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/static/home/css/style.css">
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <a href="#" class="logo"><span>Q</span>Trip</a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#packages">packages</a>
+        <a href="#services">services</a>
+        <a href="#gallery">gallery</a>
+        <a href="#review">review</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-search" id="search-btn"></i>
+        <i class="fas fa-user" id="login-btn"></i>
+        {% comment %} {% if user.is_authenticated %}
+            <a href="/user/logoutCustomer">Logout</a>
+        {% endif %} {% endcomment %}
+    </div>
+
+
+    <form action="" class="search-bar-container">
+        <input type="search" id="search-bar" placeholder="search here...">
+        <label for="search-bar" class="fas fa-search"></label>
+    </form>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- login form container  -->
+
+<div class="login-form-container">
+
+    <i class="fas fa-times" id="login-form-close"></i>
+
+    <form action="/user/loginCustomer" method="POST">
+        {% csrf_token %}
+        <h3>login</h3>
+        <input type="email" class="box" placeholder="enter your email" name="loginemail" required>
+        <input type="password" class="box" placeholder="enter your password" name="loginpass" required>
+        <input type="submit" value="login now" class="btn">
+        <input type="checkbox" id="remember">
+        <label for="remember">remember me</label>
+        <p>forget password? <a href="#">click here</a></p>
+        <p>don't have and account? <span id="register-now">register now</span></p>
+    </form>
+
+</div>
+
+<!-- login form container ends  -->
+
+<!-- register form container  -->
+
+<div class="register-form-container">
+
+    <i class="fas fa-times" id="register-form-close"></i>
+
+    <form action="/user/registerCustomer" method="POST">
+        {% csrf_token %}
+        <h3>register</h3>
+        <input type="text" class="box" placeholder="First Name" name="fname" required>
+        <input type="text" class="box" placeholder="Last Name" name="lname" required>
+        <input type="email" class="box" placeholder="Email" name="email" required>
+        <input type="phone" class="box" placeholder="Phone" name="phoneNumber" required>
+        <input type="password" class="box" placeholder="Password" name="password" required>
+        <input type="password" class="box" placeholder="Confirm Password" name="confirmPassword" required>
+        <input type="submit" value="register now" class="btn">
+        <p>Already have an account? <span id="login-now">Login Now</span></p>
+    </form>
+
+</div> 
+
+<!-- register form container ends  -->
+
+{% for message in messages %}
+  <div class="mb-0 mt-5 sticky-top alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+
+{% block body %}
+
+
+{% endblock body %}
+
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>about us</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quas magni pariatur est accusantium voluptas enim nemo facilis sit debitis.</p>
+        </div>
+        <div class="box">
+            <h3>branch locations</h3>
+            <a href="#">india</a>
+            <a href="#">USA</a>
+            <a href="#">japan</a>
+            <a href="#">france</a>
+        </div>
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#">home</a>
+            <a href="#">book</a>
+            <a href="#">packages</a>
+            <a href="#">services</a>
+            <a href="#">gallery</a>
+            <a href="#">review</a>
+            <a href="#">contact</a>
+        </div>
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#">facebook</a>
+            <a href="#">instagram</a>
+            <a href="#">twitter</a>
+            <a href="#">linkedin</a>
+        </div>
+
+    </div>
+
+    <h1 class="credit"> created by <span> Mr. Vishal </span> | © QTrip 2024 | all rights reserved! </h1>
+
+</section>
+
+{% block js %}
+
+{% endblock js %}
+
+</body>
+</html>

@@ -58,7 +58,6 @@ function addCityToDOM(id, city, description, image) {
 
   const dataContainer = document.getElementById("data");
   dataContainer.appendChild(boxDiv);
-  console.log("1");
 
 }
 
