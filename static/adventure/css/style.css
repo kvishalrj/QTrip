@@ -4,6 +4,10 @@
     flex-wrap: wrap; */
   }
 
+  a{
+    text-decoration: none !important;
+  }
+
   /* activity page css */
 
 .activity-card {
@@ -69,6 +73,7 @@
 
   .filter-bar-tile label{
     font-size: 20px;
+    font-weight: 600;
   }
   
   .category-filter {
@@ -76,6 +81,8 @@
     border-radius: 20px;
     padding: 5px 20px;
     margin: 10px 10px 10px 0px;
+    font-size: 1.8rem;
+    font-weight: 600;
   }
   .category-banner {
     position: absolute;
@@ -98,6 +105,16 @@
     align-items: center;
     border-radius: 10px 0px 0px 10px;
     font-weight: bolder;
+    font-size: 1.8rem;
+  }
+
+  h6{
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+  }
+
+  .form-control {
+    font-size: 1.8rem !important;
   }
 
 

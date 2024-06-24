@@ -51,8 +51,8 @@ function addCityToDOM(id, city, description, image) {
                     <i class="fas fa-star"></i>
                     <i class="far fa-star"></i>
                 </div>
-                <div class="price"> $90.00 <span>$120.00</span> </div>
-                <a href="#" class="btn">book now</a>
+                <div class="price"> $700.00 <span>$120.00</span> </div>
+                <a href="#" class="btn">Explore now</a>
             </div>
           </a>`;
 
