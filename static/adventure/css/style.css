@@ -1,3 +1,7 @@
+:root{
+  --orange:#ffa500;
+}
+
  .content {
     padding: 100px 0px;
     /* display: flex;
@@ -116,7 +120,3 @@
   .form-control {
     font-size: 1.8rem !important;
   }
-
-
-  
-  

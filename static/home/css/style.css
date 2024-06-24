@@ -183,6 +183,7 @@ header .search-bar-container label:hover{
   text-transform: uppercase;
   text-align: center;
   padding:1rem 0;
+  font-weight: 600;
 }
 
 .login-form-container form .box{
@@ -208,8 +209,11 @@ header .search-bar-container label:hover{
 }
 
 .login-form-container form .btn{
+  font-size: 2rem;
+  color: #fff;
   display: block;
   width:100%;
+  background-color: var(--orange);
 }
 
 .login-form-container form p{
@@ -268,6 +272,7 @@ header .search-bar-container label:hover{
   text-transform: uppercase;
   text-align: center;
   padding:1rem 0;
+  font-weight: 600;
 }
 
 .register-form-container form .box{
@@ -293,6 +298,9 @@ header .search-bar-container label:hover{
 }
 
 .register-form-container form .btn{
+  font-size: 2rem;
+  color: #fff;
+  background-color: var(--orange);
   display: block;
   width:100%;
 }
