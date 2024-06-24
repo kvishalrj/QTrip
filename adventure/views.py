@@ -4,3 +4,7 @@ from django.views import View
 class AdventurePageView(View):
     def get(self, request):
         return render(request, 'adventure/adventure.html')
+    
+class AdventureDetailPageView(View):
+    def get(self, request):
+        return render(request, 'adventure/adventure_detail.html')
