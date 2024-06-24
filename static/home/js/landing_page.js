@@ -39,7 +39,7 @@ function addCityToDOM(id, city, description, image) {
   const boxDiv = document.createElement("div");
   boxDiv.classList.add("box");
   
-  boxDiv.innerHTML = `<a href="pages/adventures/?city=${id}" id="${id}">
+  boxDiv.innerHTML = `<a href="/adventures/?city=${id}" id="${id}">
             <img src="${image}" alt="">
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> ${city} (${description})</h3>

@@ -13,6 +13,11 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="/static/home/css/style.css">
+    {% comment %} <link rel="stylesheet" href="/static/home/css/alert.css"> {% endcomment %}
+
+    {% block css %}
+    
+    {% endblock css %}
 
 </head>
 <body>
@@ -23,7 +28,7 @@
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
-    <a href="#" class="logo"><span>Q</span>Trip</a>
+    <a href="/" class="logo"><span>Q</span>Trip</a>
 
     <nav class="navbar">
         <a href="#home">home</a>
@@ -35,14 +40,13 @@
     </nav>
 
     <div class="icons">
-        <i class="fas fa-search" id="search-btn"></i>
+        <i class="fas fa-search" id="search-btn"></i> 
+        {% if user.is_authenticated %}
+            <i><a href="/user/logoutCustomer">Logout</a></i>
+        {% else %}
         <i class="fas fa-user" id="login-btn"></i>
-        <i class="fas fa-user" id="register-btn"></i>
-        {% comment %} {% if user.is_authenticated %}
-            <a href="/user/logoutCustomer">Logout</a>
-        {% endif %} {% endcomment %}
+        {% endif %}
     </div>
-
 
     <form action="" class="search-bar-container">
         <input type="search" id="search-bar" placeholder="search here...">
@@ -98,13 +102,6 @@
 
 <!-- register form container ends  -->
 
-{% for message in messages %}
-  <div class="mb-0 mt-5 sticky-top alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    <strong>Message:</strong> {{ message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-{% endfor %}
-
 {% block body %}
 
 
@@ -150,6 +147,16 @@
     <h1 class="credit"> created by <span> Mr. Vishal </span> | © QTrip 2024 | all rights reserved! </h1>
 
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        {% if messages %}
+            {% for message in messages %}
+                alert("{{ message|escapejs }}");
+            {% endfor %}
+        {% endif %}
+    });
+</script>
 
 {% block js %}
 

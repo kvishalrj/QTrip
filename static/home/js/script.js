@@ -4,7 +4,6 @@ let formBtn = document.querySelector('#login-btn');
 let loginForm = document.querySelector('.login-form-container');
 let loginFormClose = document.querySelector('#login-form-close');
 let registerNow = document.querySelector('#register-now');
-let registerBtn = document.querySelector('#register-btn');
 let registerForm = document.querySelector('.register-form-container');
 let registerFormClose = document.querySelector('#register-form-close');
 let loginNow = document.querySelector('#login-now');
@@ -41,10 +40,6 @@ loginFormClose.addEventListener('click', () =>{
 
 registerNow.addEventListener('click', () =>{
     loginForm.classList.remove('active');
-    registerForm.classList.add('active');
-});
-
-registerBtn.addEventListener('click', () =>{
     registerForm.classList.add('active');
 });
 
