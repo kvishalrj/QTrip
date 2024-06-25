@@ -2,6 +2,11 @@
     padding: 100px 0px;
   }
   
+
+  #adventure-name {
+    font-size: 3rem;
+    font-weight: 600;
+  }
   /* activity-detail page css */
   
   .adventure-detail-card {
@@ -10,6 +15,11 @@
     padding: 16px;
     /* margin: 8px; */
     width: 100%;
+  }
+
+  .adventure-detail-card h5{
+    font-size: 2.6rem;
+    font-weight: 600;
   }
   
   .activity-card-image {
@@ -28,12 +38,13 @@
   }
   
   .reserve-button {
+    font-size: 2rem;
     width: 100%;
     border: none;
     background-color: rgb(255, 145, 0);
     color: #fff;
     font-weight: bolder;
-    padding: 15px;
+    padding: 10px;
     margin: 20px 0px;
     border-radius: 8px;
     display: flex;
@@ -68,3 +79,23 @@
     text-decoration: none !important;
   }
   
+  #adventure-content {
+    font-size: 1.6rem;
+  }
+
+ #myForm label{
+  font-size: 2rem;
+  font-weight: 500;
+ }
+
+ .form-control{
+  font-size: 1.6rem !important;
+ }
+
+ #myForm div>div>h6{
+  font-size: 2rem;
+ }
+
+ #reservation-person-cost{
+  font-size: 1.8rem;
+ }
