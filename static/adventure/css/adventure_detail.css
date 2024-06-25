@@ -58,6 +58,10 @@
   #reserved-banner {
     display: none;
   }
+
+  #reservation-panel-sold-out {
+    display: none;
+  }
   
   #carouselExampleIndicators {
     width: 100%;

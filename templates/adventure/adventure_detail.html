@@ -45,8 +45,10 @@
                         This activity is currently sold out. But there's a lot more to
                         <a href="../../../" style="color: orange !important">explore.</a>
                     </div>
+                    
                     <div id="reservation-panel-available">
-                        <form id="myForm" action="" method="">
+                        <form id="myForm" action="/booking/newBooking" method="POST">
+                            {% csrf_token %}
                             <label>Name</label>
                             <input type="text" class="form-control" name="name" required />
                             <br />
@@ -80,7 +82,13 @@
                                     </h5>
                                 </div>
                             </div>
+                            <input type="hidden" id="total_cost" name="total_cost" value="0" />
+                            <input type="hidden" id="adventure_id" name="adventure_id" value="0" />
+                        {% if user.is_authenticated %}
                             <button class="reserve-button" type="submit">Reserve</button>
+                        {% else %}
+                            <div style="text-align: center; font-size: 4rem; font-weight:600; color: rgb(255, 145, 0);">Please login to reserve</div>
+                        {% endif %}
                         </form>
                     </div>
                 </div>
@@ -105,19 +113,14 @@ crossorigin="anonymous"></script>
         fetchAdventureDetails,
         addAdventureDetailsToDOM,
         addBootstrapPhotoGallery,
-        conditionalRenderingOfReservationPanel,
-        captureFormSubmit,
         calculateReservationCostAndUpdateDOM,
-        showBannerIfAlreadyReserved,
     } from "/static/adventure/js/adventure_detail.js";
     (async function () {
         let adventureId = await getAdventureIdFromURL(window.location.search);
         let adventureDetails = await fetchAdventureDetails(adventureId);
+        document.getElementById('reservation-person-cost').innerHTML = String(adventureDetails.costPerHead);
         addAdventureDetailsToDOM(adventureDetails);
         addBootstrapPhotoGallery(adventureDetails.images);
-        conditionalRenderingOfReservationPanel(adventureDetails);
-        captureFormSubmit(adventureDetails);
-        showBannerIfAlreadyReserved(adventureDetails);
         function onPersonsChange(event) {
             calculateReservationCostAndUpdateDOM(
                 adventureDetails,

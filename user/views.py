@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -8,6 +9,9 @@ from .models import Customers
 
 class RegisterPageView(View):
     def get(self, request):
+        referer = request.META.get('HTTP_REFERER')
+        if referer:
+            return HttpResponseRedirect(referer)
         return redirect('/')
 
 class RegisterCustomerView(View):
@@ -16,6 +20,7 @@ class RegisterCustomerView(View):
         return HttpResponse('404 - Error')
         
     def post(self, request):
+        referer = request.META.get('HTTP_REFERER')
         fname = request.POST.get('fname')
         lname = request.POST.get('lname')
         email = request.POST.get('email')
@@ -25,14 +30,20 @@ class RegisterCustomerView(View):
 
         if not all([fname, lname, email, phone_number, password, confirm_password]):
             messages.error(request, 'All fields are required.')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')
         
         if password != confirm_password:
             messages.error(request, 'Passwords must match.')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')
 
         if User.objects.filter(email=email).exists():
             messages.error(request, 'Email is already taken.')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')
 
         try:
@@ -45,9 +56,13 @@ class RegisterCustomerView(View):
             customer.save()
 
             messages.success(request, 'Your account has been successfully created.')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')
         except Exception as e:
             messages.error(request, f'An error occurred: {e}')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')
  
 class LoginCustomerView(View):
@@ -55,6 +70,7 @@ class LoginCustomerView(View):
         return redirect('/')
 
     def post(self, request):
+        referer = request.META.get('HTTP_REFERER')
         loginemail = request.POST.get('loginemail')
         loginpass = request.POST.get('loginpass')
 
@@ -63,9 +79,13 @@ class LoginCustomerView(View):
         if user is not None:
             login(request, user)
             messages.success(request, 'Successfully Logged In')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')  
         else:
             messages.error(request, 'Invalid credentials, please try again...')
+            if referer:
+                return HttpResponseRedirect(referer)
             return redirect('/')
 
 class LogoutCustomerView(View):

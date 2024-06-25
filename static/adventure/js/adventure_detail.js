@@ -120,78 +120,11 @@ function addBootstrapPhotoGallery(images) {
   photoGallery.appendChild(carouselContainer);
 }
 
-function conditionalRenderingOfReservationPanel(adventure) {
-  if (adventure.available) {
-
-    document.getElementById("reservation-panel-available").style.display = "block";
-    document.getElementById("reservation-panel-sold-out").style.display = "none";
-    document.getElementById("reservation-person-cost").innerHTML = String(adventure.costPerHead);
-
-  } else {
-
-    document.getElementById("reservation-panel-available").style.display = "none";
-    document.getElementById("reservation-panel-sold-out").style.display = "block";
-
-  }
-
-}
-
 function calculateReservationCostAndUpdateDOM(adventure, persons) {
   const totalCost = adventure.costPerHead * persons;
   document.getElementById('reservation-cost').innerHTML = totalCost;
-
-}
-
-function captureFormSubmit(adventure) {
-  const form = document.getElementById('myForm');
-  
-  form.addEventListener('submit', async function(event) {
-    
-    event.preventDefault();
-
-    const formData = new FormData(form);
-    const name = formData.get('name');
-    const date = formData.get('date');
-    const person = formData.get('person');
-    
-    const data = {
-      name: name,
-      date: date,
-      person: person,
-      adventure: adventure.id
-    };
-    
-    try {
-
-      const response = await fetch(`${config.backendEndpoint}/reservations/new`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      
-      if (response.ok) {
-        alert('Success!');
-        location.reload();
-      } else {
-        alert('Failed!');
-      }
-    } catch (error) {
-      alert('Failed!');
-    }
-  });
-}
-
-function showBannerIfAlreadyReserved(adventure) {
-
-  const reservedBanner = document.getElementById('reserved-banner');
-
-  if (adventure.reserved) {
-    reservedBanner.style.display = "block";
-  } else {
-    reservedBanner.style.display = "none";
-  }
+  document.getElementById('total_cost').value = totalCost;
+  document.getElementById('adventure_id').value = adventure.id;
 }
 
 export {
@@ -199,8 +132,5 @@ export {
   fetchAdventureDetails,
   addAdventureDetailsToDOM,
   addBootstrapPhotoGallery,
-  conditionalRenderingOfReservationPanel,
-  captureFormSubmit,
   calculateReservationCostAndUpdateDOM,
-  showBannerIfAlreadyReserved,
 };
