@@ -58,10 +58,6 @@
   #reserved-banner {
     display: none;
   }
-
-  #reservation-panel-sold-out {
-    display: none;
-  }
   
   #carouselExampleIndicators {
     width: 100%;
@@ -102,4 +98,8 @@
 
  #reservation-person-cost{
   font-size: 1.8rem;
+ }
+
+ #reservation-panel-sold-out{
+  display: none;
  }
