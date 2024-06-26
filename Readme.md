@@ -73,5 +73,5 @@ JS, Bootstrap, Conditional rendering, Bootstrap Carousel
 ![](/images/Screenshot%202024-06-14%20100344.png)
 
 ### QTrip Reservations page
-![](/images/Screenshot%202024-06-14%20100409.png)
+![](/images/Screenshot%20(139).png)
 
