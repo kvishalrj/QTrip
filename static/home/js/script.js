@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   if (formBtn) {
       formBtn.addEventListener('click', () => {
-          loginForm.classList.toggle('active');
+          loginForm.classList.add('active');
       });
   }
 
