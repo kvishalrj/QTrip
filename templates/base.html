@@ -30,6 +30,9 @@
     <a href="/" class="logo"><span>Q</span>Trip</a>
 
     <nav class="navbar">
+        {% if user.is_authenticated %}
+        <a href="/user/my_reservations">My Reservations</a>
+        {% endif %}
         <a href="/#home">home</a>
         <a href="/#packages">packages</a>
         <a href="/#services">services</a>

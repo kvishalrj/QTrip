@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.views import View
 from .models import Customers
+from booking.models import Reservation
 
 
 class RegisterPageView(View):
@@ -93,3 +94,11 @@ class LogoutCustomerView(View):
         logout(request)
         messages.success(request, 'Successfully logged out')
         return redirect('/')
+    
+class MyReservationsView(View):
+    def get(self, request):
+        user = request.user
+        reservations = Reservation.objects.filter(user=user)
+        context = {'reservations': reservations}
+        return render(request, 'user/reservations_history.html', context)
+        

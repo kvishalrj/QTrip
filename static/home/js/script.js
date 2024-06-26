@@ -24,6 +24,11 @@ menu.addEventListener('click', () =>{
     navbar.classList.toggle('active');
 });
 
+navbar.addEventListener('click', ()=>{
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+});
+
 formBtn.addEventListener('click', () =>{
     loginForm.classList.add('active');
 });

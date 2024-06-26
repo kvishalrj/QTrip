@@ -1,0 +1,75 @@
+{% extends "base.html" %} 
+
+{% block title %} QTrip Booking History{% endblock title %}
+
+{% block css %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<style>
+    h1{
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin: 5rem 0;
+        color: #ffa500;
+    }
+
+    #reservation_container{
+        display: block;
+        margin-top: 10rem;
+        margin-bottom: 20rem;
+    }
+
+    th{
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    td {
+        font-size: 1.8rem;
+    }
+</style>
+
+{% endblock css %}
+
+{% block body %}
+
+<div class="container" id="reservation_container">
+    <h1 class="mb-4">My Reservations</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date of Adventure</th>
+                    <th scope="col">Persons</th>
+                    <th scope="col">Adventure ID</th>
+                    <th scope="col">Total Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.name }}</td>
+                        <td>{{ reservation.date_of_adventure }}</td>
+                        <td>{{ reservation.person }}</td>
+                        <td>{{ reservation.adventure_id }}</td>
+                        <td>${{ reservation.total_cost }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock body %} 
+
+{% block js %} 
+
+<!-- Bootstrap script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+{% endblock js %}
