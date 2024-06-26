@@ -1,2 +1,4 @@
 .env
 ca.pem
+db.sqlite3
+
