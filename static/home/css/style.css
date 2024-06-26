@@ -399,6 +399,10 @@ header .search-bar-container label:hover{
   background:var(--orange);
 }
 
+.box a img:hover{
+  -webkit-filter: brightness(50%);
+}
+
 .book .row{
   display: flex;
   flex-wrap: wrap;

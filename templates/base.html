@@ -30,16 +30,16 @@
     <a href="/" class="logo"><span>Q</span>Trip</a>
 
     <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#packages">packages</a>
-        <a href="#services">services</a>
-        <a href="#gallery">gallery</a>
-        <a href="#review">review</a>
-        <a href="#contact">contact</a>
+        <a href="/#home">home</a>
+        <a href="/#packages">packages</a>
+        <a href="/#services">services</a>
+        <a href="/#gallery">gallery</a>
+        <a href="/#review">review</a>
+        <a href="/#contact">contact</a>
     </nav>
 
     <div class="icons">
-        <i class="fas fa-search" id="search-btn"></i> 
+        
         {% if user.is_authenticated %}
             <i><a href="/user/logoutCustomer">Logout</a></i>
         {% else %}
@@ -156,6 +156,8 @@
         {% endif %}
     });
 </script>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
 <script src="/static/home/js/script.js"></script>
