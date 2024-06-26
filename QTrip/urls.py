@@ -7,7 +7,7 @@ admin.site.site_header = "QTrip Admin"
 admin.site.index_title = "Welcome to QTrip Admin Panel"
 
 urlpatterns = [
-    path('', include('home.urls')),
+    path('/', include('home.urls')),
     path('adventures/', include('adventure.urls')),
     path('user/', include('user.urls')),
     path('booking/', include('booking.urls')),
