@@ -30,7 +30,11 @@
         font-weight: 600;
     }
 
-    td {
+    td{
+        font-size: 1.6rem;
+    }
+
+    #no-reservation-banner{
         font-size: 1.6rem;
     }
 </style>
@@ -42,6 +46,7 @@
 <div class="container" id="reservation_container">
     <h1 class="mb-4">My Reservations</h1>
     <div class="table-responsive">
+        {% if reservations %}
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -64,6 +69,13 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+        <div class="alert alert-dark" role="alert" id="no-reservation-banner">
+            Oops! You have not made any reservations yet! (Click
+            <a href="/"><strong>here</strong></a>
+            to explore some cities)
+        </div>
+        {% endif %}
     </div>
 </div>
 
