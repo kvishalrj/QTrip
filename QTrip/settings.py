@@ -14,8 +14,6 @@ import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 from decouple import config
-import base64
-import tempfile
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -85,27 +83,6 @@ WSGI_APPLICATION = 'QTrip.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-ca_pem_base64 = os.getenv('DB_SSL_CA')
-
-if not ca_pem_base64:
-    raise ValueError("DB_SSL_CA environment variable is not set")
-
-try:
-    ca_pem_content = base64.b64decode(ca_pem_base64)
-except Exception as e:
-    raise ValueError(f"Error decoding DB_SSL_CA: {e}")
-
-try:
-    ca_pem_file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'ca.pem')
-
-    with open(ca_pem_file_path, 'wb') as ca_pem_file:
-        ca_pem_file.write(ca_pem_content)
-
-    # os.chmod(ca_pem_file_path, 0o400)
-
-except Exception as e:
-    raise IOError(f"Error writing to temporary file: {e}")
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -116,7 +93,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
         'OPTIONS': {
             'ssl': {
-                'ca': ca_pem_file_path,
+                'ca': 'ca.pem',
             },
         },
     }
