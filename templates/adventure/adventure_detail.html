@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %} QTrip Adventure Detail {% endblock title %}
 
 {% block css %}
@@ -29,7 +31,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="image">
-                    <img src="/static/adventure/images/book-img.svg" alt="">
+                    <img src="{% static 'adventure/images/book-img.svg' %}" alt="">
                 </div>
                 <div class="">
                     
@@ -131,7 +133,7 @@ crossorigin="anonymous"></script>
         addAdventureDetailsToDOM,
         addBootstrapPhotoGallery,
         calculateReservationCostAndUpdateDOM,
-    } from "/static/adventure/js/adventure_detail.js";
+    } from "{% static 'adventure/js/adventure_detail.js' %}";
     (async function () {
         let adventureId = await getAdventureIdFromURL(window.location.search);
         let adventureDetails = await fetchAdventureDetails(adventureId);
