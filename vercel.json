@@ -10,9 +10,6 @@
           }
       }
   ],
-  "scripts": {
-    "build": "./build_files.sh"
-  },
   "routes": [
       {
           "src": "/static/(.*)",
