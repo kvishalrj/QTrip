@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Update and install Python and pip
-sudo apt-get update && sudo apt-get install -y python3.9 python3.9-venv python3.9-dev python3-pip
+# Update package lists
+sudo apt-get update
 
-# Ensure pip is using Python 3.9
+# Install Python and pip
+sudo apt-get install -y python3.9 python3.9-venv python3.9-dev
+
+# Ensure pip is installed and upgrade to the latest version
 sudo apt-get install -y python3-pip
-sudo python3.9 -m pip install --upgrade pip
+python3.9 -m pip install --upgrade pip
 
 # Install project dependencies
 python3.9 -m pip install -r requirements.txt
