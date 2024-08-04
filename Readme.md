@@ -11,9 +11,6 @@ Implemented conditional rendering of page elements.
 
 - Utilized localStorage to persist user preferences at client-side and facilitated reservation form submission using fetch API.
 
-### Q Trip Architecture Diagram
-![](/images/Screenshot%202024-06-14%20100204.png)
-
  >## Fetch data using REST API and dynamically render landing page
 
 ### Scope of Work
