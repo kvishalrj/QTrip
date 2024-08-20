@@ -74,11 +74,20 @@ class LoginCustomerView(View):
         referer = request.META.get('HTTP_REFERER')
         loginemail = request.POST.get('loginemail')
         loginpass = request.POST.get('loginpass')
+        # remember_me = request.POST.get('remember_me', False)
 
         user = authenticate(request, username=loginemail, password=loginpass)
 
         if user is not None:
             login(request, user)
+
+            # if remember_me:
+            #     # Set the session to expire in 2 weeks (1209600 seconds)
+            #     request.session.set_expiry(1209600)
+            # else:
+            #     # Set the session to expire when the browser is closed
+            #     request.session.set_expiry(0)
+
             messages.success(request, 'Successfully Logged In')
             if referer:
                 return HttpResponseRedirect(referer)

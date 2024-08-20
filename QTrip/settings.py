@@ -59,6 +59,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# Set the session expiry age (in seconds)
+# SESSION_COOKIE_AGE = 30  # 30 seconds for example
+
+# If you want the session to expire when the browser is closed
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
 ROOT_URLCONF = 'QTrip.urls'
 
 TEMPLATES = [
